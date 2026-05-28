@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>D' Merhy Boutique | Coronas de Alta Gama y Joyería Artesanal</title>
+    <meta name="description" content="Descubra las exclusivas coronas y tiaras artesanales de D' Merhy Boutique. Piezas únicas esculpidas a mano que reflejan opulencia silenciosa, exclusividad y lujo eterno.">
+    <meta name="keywords" content="joyería de lujo, coronas artesanales, tiaras de novia, coronas quinceañera, coronas de gala, alta gama, D Merhy Boutique">
+    <meta name="author" content="D' Merhy Boutique">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon (Logotipo en la pestaña del navegador) -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <!-- Open Graph (Redes Sociales) -->
+    <meta property="og:title" content="D' Merhy Boutique | Coronas de Alta Gama y Joyería de Lujo">
+    <meta property="og:description" content="Piezas artesanales exclusivas que coronan tus momentos más memorables. Opulencia silenciosa y maestría orfebre.">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts: Cinzel (Serif Imperial) y Montserrat (Sans-Serif de Lujo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Estilos de Lujo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cabecera de Navegación de Lujo (Glassmorphism & Gold Acent) -->
+    <header class="navbar" id="main-header">
+        <div class="navbar-container">
+            <a href="#" class="brand-link">
+                <!-- Logotipo integrado en barra de navegación -->
+                <img src="images/logo.png" alt="D' Merhy" class="nav-logo" id="nav-logo-img">
+                <span class="brand-text">D' MERHY</span>
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#" class="nav-link active">Inicio</a>
+                <a href="#filosofia" class="nav-link">Filosofía</a>
+                <a href="#catalogo" class="nav-link">Colección</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir Menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section (Portada de Impacto en Pantalla Completa) -->
+    <section class="hero-section" id="inicio">
+        <!-- Video en segundo plano - Auto-play, loop, silencioso y optimizado móvil -->
+        <div class="video-container">
+            <video autoplay muted loop playsinline id="hero-video" class="bg-video">
+                <source src="images/hero-video.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <!-- Overlay oscuro sutil para máxima legibilidad tipográfica -->
+            <div class="video-overlay"></div>
+        </div>
+
+        <!-- Contenido Superior del Hero -->
+        <div class="hero-content">
+            <div class="logo-wrapper">
+                <img src="images/logo.png" alt="D' Merhy Boutique Logo" class="hero-logo" id="hero-logo-img">
+            </div>
+            <h1 class="hero-title">D' Merhy Boutique</h1>
+            <p class="hero-subtitle">Alta Orfebrería & Coronas de Lujo Artesanal</p>
+            <div class="hero-actions">
+                <a href="#catalogo" class="btn-luxury" id="cta-scroll">
+                    <span>Descubrir la Colección</span>
+                    <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Indicador de desplazamiento (Scroll Down) -->
+        <div class="scroll-indicator">
+            <span class="scroll-dot"></span>
+        </div>
+    </section>
+
+    <!-- Sección de Filosofía (Opulencia Silenciosa) -->
+    <section class="philosophy-section" id="filosofia">
+        <div class="section-container">
+            <span class="gold-accent-label">Legado & Maestría</span>
+            <h2 class="philosophy-title">Cada corona cuenta una historia inmortal</h2>
+            <div class="divider-gold"></div>
+            <p class="philosophy-text">
+                En D' Merhy Boutique no fabricamos accesorios; esculpimos obras de arte atemporales. 
+                Cada pieza representa la alianza perfecta entre cristales de pureza celestial, perlas de brillo sublime y metales finos moldeados a mano por orfebres consagrados.
+                Una corona es el símbolo definitivo de tu gracia, poder y trascendencia.
+            </p>
+            <blockquote class="philosophy-quote">
+                "La verdadera opulencia no grita, se contempla con reverencia."
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Sección del Catálogo de Exhibición Escalable -->
+    <section class="catalog-section" id="catalogo">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="gold-accent-label">Exhibición Exclusiva</span>
+                <h2 class="section-title">Nuestras Colecciones</h2>
+                <p class="section-subtitle">Obras maestras de edición limitada diseñadas para momentos memorables</p>
+                <div class="divider-gold"></div>
+            </div>
+
+            <!-- CONTENEDOR VACÍO ESCALABLE (MÁXIMA PRIORIDAD - Renderizado Dinámico vía JavaScript) -->
+            <div id="catalogo-container" class="catalogo-grid">
+                <!-- Se inyecta dinámicamente mediante JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto & Footer Elegante -->
+    <footer class="footer-section" id="contacto">
+        <div class="footer-top">
+            <div class="footer-container">
+                <!-- Columna Marca -->
+                <div class="footer-brand">
+                    <h3 class="footer-brand-title">D' MERHY BOUTIQUE</h3>
+                    <p class="footer-brand-tagline">El arte de vestir la realeza interior.</p>
+                    <div class="social-links">
+                        
+                        <!-- Mathias, coloca el link de Instagram aquí -->
+                        <!-- Enlace original provisto: https://www.instagram.com/merhyboutique/ -->
+                        <a href="" target="_blank" class="social-icon-link" aria-label="Instagram" id="instagram-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="svg-icon">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                            <span>@merhyboutique</span>
+                        </a>
+                        <!-- Mathias, coloca el link de Instagram aquí -->
+
+                    </div>
+                </div>
+
+                <!-- Columna Ubicación e Información de Contacto -->
+                <div class="footer-info">
+                    <h4 class="footer-info-title">Atelier Exclusivo</h4>
+                    
+                    <!-- Mathias, llena tu dirección aquí -->
+                    <!-- Ubicación física provista por el usuario: https://www.google.com/maps/place/D'+Merhy+Boutique/@-0.3414867,-78.4801948... -->
+                    <div class="info-block">
+                        <span class="info-label">Dirección Física</span>
+                        <a href="" target="_blank" class="info-link" id="location-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="svg-icon-small">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Dirección del local aquí... (Haz clic para ver mapa)</span>
+                        </a>
+                    </div>
+                    <!-- Mathias, llena tu dirección aquí -->
+
+                    <!-- Sección Teléfono de Consulta -->
+                    <div class="info-block">
+                        <span class="info-label">Consultas y Citas Exclusivas</span>
+                        <!-- WhatsApp del usuario: +593995199498 -->
+                        <a href="https://wa.me/593995199498?text=Hola%20D'Merhy%20Boutique,%20me%20gustaría%20agendar%20una%20cita%20exclusiva%20para%20conocer%20sus%20diseños." target="_blank" class="info-link whatsapp-direct">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="svg-icon-small text-gold">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>+593 99 519 9498</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Horario de Atelier -->
+                <div class="footer-hours">
+                    <h4 class="footer-info-title">Horarios de Atelier</h4>
+                    <p class="hours-text">Visite nuestro atelier privado o reserve una cita personalizada:</p>
+                    <ul class="hours-list">
+                        <li><span>Lunes y Martes</span> 8:00 AM – 8:00 PM</li>
+                        <li><span>Miércoles</span> 8:30 AM – 8:00 PM</li>
+                        <li><span>Jueves y Viernes</span> 8:00 AM – 8:00 PM</li>
+                        <li><span>Sábado</span> 8:30 AM – 1:30 PM</li>
+                        <li><span>Domingo</span> 2:00 PM – 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p class="copyright">&copy; 2026 D' Merhy Boutique. Todos los derechos reservados. Diseñado para la Realeza Moderna.</p>
+                <div class="legal-links">
+                    <a href="#" class="legal-link">Términos de Exclusividad</a>
+                    <a href="#" class="legal-link">Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DETALLE DE PRODUCTO (VISTA DETALLADA PREMIUM) -->
+    <div id="product-modal" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close-btn" aria-label="Cerrar ventana">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-content">
+                <!-- Imagen detallada con zoom suave -->
+                <div class="modal-image-wrapper">
+                    <img src="" alt="" id="modal-product-img" class="modal-product-image">
+                </div>
+                <!-- Información detallada -->
+                <div class="modal-info">
+                    <span class="modal-collection-tag" id="modal-product-collection">COLECCIÓN IMPERIAL</span>
+                    <h3 class="modal-product-title" id="modal-product-title">Corona Imperial</h3>
+                    <div class="divider-gold-small"></div>
+                    
+                    <p class="modal-product-materials" id="modal-product-materials">
+                        Descripción detallada de materiales de lujo...
+                    </p>
+
+                    <div class="modal-exclusivity-box">
+                        <span class="exclusivity-title">GARANTÍA DE EXCLUSIVIDAD</span>
+                        <p class="exclusivity-text">Cada una de nuestras piezas se elabora sobre pedido adaptándose a la fisionomía y estilo de cada cliente. Nunca producimos dos piezas idénticas.</p>
+                    </div>
+
+                    <!-- El botón de WhatsApp dinámico se autogenera mediante JS -->
+                    <div id="modal-action-container">
+                        <!-- Botón de acción con WhatsApp -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP CON EFECTO DE PULSO -->
+    <a href="https://wa.me/593995199498?text=Hola%20D'Merhy%20Boutique,%20me%20gustaría%20recibir%20asesoría%20sobre%20sus%20coronas%20exclusivas." target="_blank" class="whatsapp-floating" aria-label="Contacto directo por WhatsApp" title="Asesoría Exclusiva por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="whatsapp-svg">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        <span class="whatsapp-tooltip">Atelier Directo</span>
+    </a>
+
+    <!-- Lógica de Lujo en JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
