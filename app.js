@@ -433,16 +433,42 @@ function inicializarScrollReveal() {
 function asegurarVideoAutoplay() {
     const video = document.getElementById("hero-video");
     if (video) {
-        // Ejecución inmediata con fallback
+        // Forzar explícitamente el estado silenciado por código para cumplir la política de Safari
+        video.muted = true;
+        video.defaultMuted = true;
+
+        // Intentar reproducción inmediata
         const playPromise = video.play();
         if (playPromise !== undefined) {
             playPromise.catch(error => {
-                console.log("Autoplay asistido de Safari ejecutado. Toque de pantalla requerido en modo ahorro:", error);
+                console.log("Autoplay de Safari bloqueado preventivamente (ej. Modo Ahorro). Iniciando fallback de gestos:", error);
                 
-                // Fallback: reproducir al hacer el primer toque en la pantalla
-                document.body.addEventListener("click", () => {
-                    video.play();
-                }, { once: true });
+                // Fallback de ultra-compatibilidad: iniciar reproducción al primer gesto de interacción
+                const iniciarVideoConInteraccion = () => {
+                    if (video.paused) {
+                        video.play().then(() => {
+                            console.log("Video iniciado mediante interacción táctil/scroll.");
+                            limpiarEventos();
+                        }).catch(err => {
+                            console.log("No se pudo iniciar el video en este evento:", err);
+                        });
+                    } else {
+                        limpiarEventos();
+                    }
+                };
+
+                const limpiarEventos = () => {
+                    document.removeEventListener("click", iniciarVideoConInteraccion);
+                    document.removeEventListener("touchstart", iniciarVideoConInteraccion);
+                    document.removeEventListener("touchend", iniciarVideoConInteraccion);
+                    document.removeEventListener("scroll", iniciarVideoConInteraccion);
+                };
+
+                // Escuchamos clics, toques de pantalla y scroll
+                document.addEventListener("click", iniciarVideoConInteraccion, { passive: true });
+                document.addEventListener("touchstart", iniciarVideoConInteraccion, { passive: true });
+                document.addEventListener("touchend", iniciarVideoConInteraccion, { passive: true });
+                document.addEventListener("scroll", iniciarVideoConInteraccion, { passive: true });
             });
         }
     }
