@@ -215,7 +215,7 @@ function inicializarNavegacionScroll() {
             if (targetSection) {
                 // Cerrar menú móvil si está abierto
                 const navMenu = document.getElementById("nav-menu");
-                const navToggle = document.getElementById("nav-toggle");
+                const navToggle = document.getElementById("menu-toggle");
                 if (navMenu && navMenu.classList.contains("active")) {
                     navMenu.classList.remove("active");
                     navToggle.classList.remove("active");
