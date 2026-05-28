@@ -167,7 +167,7 @@ a {
 }
 
 .nav-menu {
-    display: none; /* Mobile hidden por defecto */
+    display: flex;
 }
 
 .nav-link {
@@ -211,15 +211,13 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 20px;
+    width: 44px;
+    height: 44px;
     background: transparent;
     border: none;
     cursor: pointer;
     z-index: 1001;
-    min-height: 44px; /* Altura táctil mínima */
-    padding: 12px 7px;
-    box-content: content-box;
+    padding: 12px 7px; /* Esto hace las barras de 30px de ancho en un área de 44px x 44px */
 }
 
 .nav-toggle .bar {
@@ -227,6 +225,19 @@ a {
     height: 2px;
     background-color: var(--accent-gold);
     transition: var(--transition-fast);
+}
+
+/* Animaciones del menú hamburguesa activado (X perfecta en CSS nativo) */
+.nav-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.nav-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
 }
 
 /* ==========================================
@@ -1178,6 +1189,38 @@ a {
    10. MEDIA QUERIES (OPTIMIZACIONES DE PANTALLA)
    ========================================== */
 
+/* Estilos específicos para pantallas móviles (Control por clases y transiciones de hardware) */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98);
+        border-bottom: 1px solid var(--accent-gold);
+        padding: 40px 0;
+        gap: 25px;
+        /* Escondido por defecto mediante opacidad y desplazamiento */
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 999;
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
 /* Tabletas y pantallas intermedias (min-width: 768px) */
 @media (min-width: 768px) {
     .nav-toggle {
@@ -1186,7 +1229,17 @@ a {
 
     .nav-menu {
         display: flex;
+        flex-direction: row;
+        position: static;
+        background: transparent;
+        padding: 0;
         gap: 20px;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        border: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
 
     .hero-title {

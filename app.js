@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarMenuMovil();
     inicializarModal();
     inicializarScrollReveal();
+    asegurarVideoAutoplay();
 });
 
 /* =========================================================================
@@ -261,7 +262,7 @@ function actualizarLinkActivoMenu() {
    7. CONTROL DE MENÚ MÓVIL RESPONSIVE
    ========================================================================= */
 function inicializarMenuMovil() {
-    const toggle = document.getElementById("nav-toggle");
+    const toggle = document.getElementById("menu-toggle");
     const menu = document.getElementById("nav-menu");
 
     if (!toggle || !menu) return;
@@ -269,55 +270,22 @@ function inicializarMenuMovil() {
     toggle.addEventListener("click", () => {
         toggle.classList.toggle("active");
         menu.classList.toggle("active");
-        
-        // Estilización dinámica del botón toggle
-        const bars = toggle.querySelectorAll(".bar");
-        if (toggle.classList.contains("active")) {
-            bars[0].style.transform = "rotate(45deg) translate(5px, 6px)";
-            bars[1].style.opacity = "0";
-            bars[2].style.transform = "rotate(-45deg) translate(5px, -6px)";
-            menu.style.display = "flex";
-            menu.style.flexDirection = "column";
-            menu.style.position = "absolute";
-            menu.style.top = "100%";
-            menu.style.left = "0";
-            menu.style.width = "100%";
-            menu.style.backgroundColor = "rgba(10, 10, 10, 0.98)";
-            menu.style.borderBottom = "1px solid var(--accent-gold)";
-            menu.style.padding = "20px 0";
-            menu.style.alignItems = "center";
-            menu.style.gap = "15px";
-            menu.style.animation = "slideUpFade 0.4s var(--transition-fast) forwards";
-        } else {
-            bars[0].style.transform = "none";
-            bars[1].style.opacity = "1";
-            bars[2].style.transform = "none";
-            setTimeout(() => {
-                if (!toggle.classList.contains("active")) {
-                    menu.style.display = "";
-                }
-            }, 300);
-        }
     });
 
-    // Ajustar menú al redimensionar pantalla
-    window.addEventListener("resize", () => {
-        if (window.innerWidth >= 768) {
-            menu.style.display = "";
-            menu.style.flexDirection = "";
-            menu.style.position = "";
-            menu.style.backgroundColor = "";
-            menu.style.borderBottom = "";
-            menu.style.padding = "";
-            menu.style.alignItems = "";
-            menu.style.gap = "";
-            menu.style.animation = "";
+    // Cerrar el menú automáticamente al hacer clic en cualquier enlace (UX Excelente)
+    const navLinks = menu.querySelectorAll(".nav-link");
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
             toggle.classList.remove("active");
             menu.classList.remove("active");
-            const bars = toggle.querySelectorAll(".bar");
-            bars[0].style.transform = "none";
-            bars[1].style.opacity = "1";
-            bars[2].style.transform = "none";
+        });
+    });
+
+    // Ajustar menú al redimensionar pantalla para prevenir inconsistencias de renderizado
+    window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768 && menu.classList.contains("active")) {
+            toggle.classList.remove("active");
+            menu.classList.remove("active");
         }
     });
 }
@@ -455,5 +423,27 @@ function inicializarScrollReveal() {
         cards.forEach(card => {
             card.classList.add("reveal");
         });
+    }
+}
+
+/* =========================================================================
+   10. SOPORTE DE REPRODUCCIÓN AUTOMÁTICA EN SAFARI (iOS)
+   Fuerza la reproducción del video en segundo plano en dispositivos Apple.
+   ========================================================================= */
+function asegurarVideoAutoplay() {
+    const video = document.getElementById("hero-video");
+    if (video) {
+        // Ejecución inmediata con fallback
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.log("Autoplay asistido de Safari ejecutado. Toque de pantalla requerido en modo ahorro:", error);
+                
+                // Fallback: reproducir al hacer el primer toque en la pantalla
+                document.body.addEventListener("click", () => {
+                    video.play();
+                }, { once: true });
+            });
+        }
     }
 }
